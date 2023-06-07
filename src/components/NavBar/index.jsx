@@ -1,25 +1,41 @@
-// import "./style01.css"
+import React from "react";
 
-// import Style from "./style.css"
+import style from "./style.module.scss";
 
-import Style from "./style.module.css"
+const navElementList = [
+  { link: "/home", name: "Home" },
+  { link: "https://facebook.com", name: "Facebook" },
+  { link: "https://google.com", name: "Google" },
+  { link: "https://linkedin.com", name: "LinkedIN" },
+];
 
-const NavBar = () => {
-  return <nav className={Style.navBar}>
-    <p>Home</p>
-    <NavItem name="Contact" link="https://fb.com" />
-    <p>About</p>
-  </nav>;
+const NavElement = ({ link, name }) => {
+  return (
+    <a href={link} className={style.navElement}>
+      {name}
+    </a>
+  );
 };
-export default NavBar
 
-const NavItem = ({name, link}) => {
-  return <a 
-  href={link} 
-  style={{
-    fontWeight:"semibold",
-    color:"violet",
-    display:"block",
-  }}
-  >{name}</a>
-}
+const NavBar = ({ setDarkmode, darkmode }) => {
+  const darkModeHandler = (e) => {
+    setDarkmode(!darkmode);
+  };
+  return (
+    <div className={`${style.navBar} ${darkmode ? style.dark : ""}`}>
+      {navElementList.map((item, index) => {
+        return <NavElement key={item.name + index} {...item} />;
+      })}
+
+      <label htmlFor="darkmode">Darkmode</label>
+      <input
+        type="checkbox"
+        name="darkmode"
+        id="darkmode"
+        onChange={darkModeHandler}
+      />
+    </div>
+  );
+};
+
+export default NavBar;
