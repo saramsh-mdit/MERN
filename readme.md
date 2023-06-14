@@ -1,25 +1,78 @@
-CSS IN React App
+# React Router Intro
 
-1. normal css (import)
-2. inline css
-3. moduler css (private)
+Use to map url to pages or navigate
 
-PATH
+- / -> homepage
 
-Note: Pathisense
+- /about - > aboutpage
 
-absolute path
-relative path
+- /blog - > blogpage
 
-BMI = mass / height^2
+# Steps
 
-mass = kg
-height = cm to inch
-1 cm = 2.4inch
+1. Dependencies
 
-State // Changing Variable
--> Something Changes
+`npm install react-router-dom`  
+`yarn add react-router-dom`
 
-useState -> state, setState
+2. Define Router
+   createBrowserRconst navigate = useNavigate(); 
+   navigate("/home");outer
+   
+   ```jsx
+   // define route
+   const router = createBrowserRouter([
+     {
+       path: "/",
+       element: <HomePage />,
+     },
+     {
+       path: "/blog",
+       element: <BlogPage />,
+       children: [
+         {
+           path: ":blogId",
+           element: <BlogDetailsPage />,
+         },
+       ],
+     },
+   ]);
+   ```
 
-comment: Ctrl + /
+3. Provide Routes
+   RouterProvider - > router
+   
+   ```jsx
+   // to use it
+   const App = () => <RouterProvider router={router}>
+   ```
+   
+   
+
+Use`<Outlet/>`for nested routes
+
+# To Navigate
+
+- Link `<Link to="/about>About</Link>`
+
+- NavLink `<NavLink to="/about>About</NavLink>`
+
+- useNavigate Hook
+
+```jsx
+const navigate = useNavigate(); 
+
+navigate("/home");
+```
+
+# To Read Params
+
+useParams Hook
+
+```jsx
+// To Create Params
+path: "/blog/:blogId";
+
+// To Read Prams
+const { blogId } = useParams();
+```

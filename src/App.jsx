@@ -1,27 +1,39 @@
-import React, { useState } from "react";
+import React from "react";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import HomePage from "./pages/Home";
+import AboutPage from "./pages/About";
+import BlogPage from "./pages/Blog";
+import BlogDetailPage from "./pages/BlogDetail";
 
-import BMIForm from "./components/BMIForm";
-import Card from "./components/Card";
-import NavBar from "./components/NavBar";
-import CardList from "./components/CardList";
-
-const dataFromBackend = [
-  { name: "Ram", email: "ram@mail.com", contact: 121636456 },
-  { name: "hari", email: "hari@mail.com", contact: 121636456 },
-  { name: "shyam", email: "shyam@mail.com", contact: 121636456 },
-  { name: "sita", email: "sita@mail.com", contact: 121636456 },
-  { name: "gita", email: "gita@mail.com", contact: 121636456 },
-];
-
-export default function App() {
-  const [darkmode, setDarkmode] = useState(false);
-
+const App = () => {
   return (
-    <>
-      <div>
-        <NavBar darkmode={darkmode} setDarkmode={setDarkmode} />
-        <CardList />
-      </div>
-    </>
+    <div>
+      <RouterProvider router={router} />
+    </div>
   );
-}
+};
+
+export default App;
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <HomePage />,
+    children: [
+      {
+        path: "about",
+        element: <AboutPage />,
+      },
+      {
+        path: "blog",
+        element: <BlogPage />,
+        children: [
+          {
+            path: ":blogID",
+            element: <BlogDetailPage />,
+          },
+        ],
+      },
+    ],
+  },
+]);
