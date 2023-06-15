@@ -1,39 +1,15 @@
 import React from "react";
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import HomePage from "./pages/Home";
-import AboutPage from "./pages/About";
-import BlogPage from "./pages/Blog";
-import BlogDetailPage from "./pages/BlogDetail";
+// import RandomCompo from "./components/RandomCompo";
+const RandomCompo = React.lazy(() => import("./components/RandomCompo"));
 
 const App = () => {
   return (
     <div>
-      <RouterProvider router={router} />
+      <React.Suspense fallback={<div>Loading</div>}>
+        <RandomCompo />
+      </React.Suspense>
     </div>
   );
 };
 
 export default App;
-
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <HomePage />,
-    children: [
-      {
-        path: "about",
-        element: <AboutPage />,
-      },
-      {
-        path: "blog",
-        element: <BlogPage />,
-        children: [
-          {
-            path: ":blogID",
-            element: <BlogDetailPage />,
-          },
-        ],
-      },
-    ],
-  },
-]);
