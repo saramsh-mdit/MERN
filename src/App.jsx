@@ -1,14 +1,11 @@
-import React from "react";
-// import RandomCompo from "./components/RandomCompo";
-const RandomCompo = React.lazy(() => import("./components/RandomCompo"));
+import { RouterProvider } from "react-router-dom";
+import router from "./router";
 
 const App = () => {
   return (
-    <div>
-      <React.Suspense fallback={<div>Loading</div>}>
-        <RandomCompo />
-      </React.Suspense>
-    </div>
+    <>
+      <RouterProvider router={router} />
+    </>
   );
 };
 
