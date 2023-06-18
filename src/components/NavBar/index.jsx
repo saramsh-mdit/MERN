@@ -14,8 +14,9 @@ const NavItem = ({ link, name }) => {
 
 const NavBar = () => {
   return (
-    <nav className="bg-gray-200">
-      <div className="flex gap-4">
+    <nav className=" py-2 px-4 absolute z-50 flex justify-center w-full">
+      <div className="bg-gray-600 opacity-70 absolute w-full h-10 top-0 left-0 z-10"></div>
+      <div className="flex gap-4 font-semibold z-50 relative">
         <NavItem
           link="/"
           name="Home"
