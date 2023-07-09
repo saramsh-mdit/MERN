@@ -76,3 +76,6 @@ path: "/blog/:blogId";
 // To Read Prams
 const { blogId } = useParams();
 ```
+
+
+// dependencies -> axios, react-router-dom, sass

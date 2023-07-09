@@ -1,7 +1,36 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+* {
+    margin: 0rem;
+    padding: 0rem;
+    box-sizing: border-box;
+    font-size: 16px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
-main {
-    min-height: 95vh;
+}
+
+a {
+    text-decoration: none;
+}
+
+button {
+    border: none;
+    padding: 0.25rem 2rem;
+    background: #393939;
+    color: white;
+    cursor: pointer;
+
+    &:hover {
+        transition-duration: 0.5s;
+        background: #a4a4a4;
+        color: rgb(86, 86, 86);
+    }
+}
+
+.flex {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: nowrap;
+}
+
+.header {
+    color: red;
 }
